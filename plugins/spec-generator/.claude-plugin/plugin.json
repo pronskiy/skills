@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "spec-generator",
+  "displayName": "Spec Generator",
+  "description": "Interview the user about a project, then produce a production-ready SPEC.md (plus CLAUDE.md and an optional private spec) that an AI agent or human team can build against.",
+  "author": {
+    "name": "Roman Pronskiy",
+    "url": "https://pronskiy.com"
+  },
+  "homepage": "https://pronskiy.com",
+  "license": "MIT",
+  "keywords": ["spec", "planning", "scoping", "roadmap", "claude-code", "project-spec"]
+}

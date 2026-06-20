@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "pronskiy-skills",
+  "owner": {
+    "name": "Roman Pronskiy",
+    "url": "https://pronskiy.com"
+  },
+  "metadata": {
+    "description": "Personal Claude Code skills and plugins.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "spec-generator",
+      "source": "./plugins/spec-generator",
+      "version": "0.1.0",
+      "description": "Interview the user about a project, then produce a production-ready SPEC.md (plus CLAUDE.md and an optional private spec).",
+      "category": "workflow",
+      "tags": ["spec", "planning", "scoping"]
+    }
+  ]
+}
