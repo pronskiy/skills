@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["severity", "summary", "issues"],
+  "properties": {
+    "severity": {
+      "type": "string",
+      "enum": ["ok", "warn", "block"],
+      "description": "ok = no concerns; warn = worth mentioning, non-blocking; block = real bug/security/data-loss or clear violation of intent."
+    },
+    "summary": {
+      "type": "string",
+      "description": "One or two sentences summarizing the review."
+    },
+    "issues": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Concrete issues, each phrased as a short actionable line. Empty when severity is ok."
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "fusion-harness",
+  "displayName": "Fusion Harness",
+  "description": "Fuse Claude with the Codex CLI in three modes: Watchdog auto-reviews each finished turn, Duel Plan co-plans with an adversarial debate, and Consult fetches a Codex second opinion on demand.",
+  "author": {
+    "name": "Roman Pronskiy",
+    "url": "https://pronskiy.com"
+  },
+  "homepage": "https://pronskiy.com",
+  "license": "MIT",
+  "keywords": ["codex", "review", "watchdog", "planning", "second-opinion", "claude-code", "multi-agent"]
+}

@@ -1,26 +1,53 @@
 # pronskiy-skills
 
-A personal Claude Code marketplace. Currently ships one plugin:
+A personal Claude Code marketplace. Ships two plugins:
 
 - **spec-generator** — interviews you about a project, then produces a production-ready `SPEC.md` (plus a `CLAUDE.md` for Claude Code, and an optional private spec when some plans must stay out of an open-source repo).
+- **fusion-harness** — fuses Claude with the [Codex](https://github.com/openai/codex) CLI: a **Watchdog** hook that has Codex review each finished turn, a **Duel Plan** skill where Claude and Codex debate a plan to consensus, and a **Consult** skill for an on-demand Codex second opinion.
 
 ```
 spec-generator-plugin/
 ├── .claude-plugin/
 │   └── marketplace.json          # the catalog
 ├── plugins/
-│   └── spec-generator/
+│   ├── spec-generator/
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json        # plugin manifest
+│   │   └── skills/
+│   │       └── spec-generator/
+│   │           ├── SKILL.md
+│   │           └── assets/
+│   │               ├── SPEC_template.md
+│   │               └── CLAUDE_template.md
+│   └── fusion-harness/
 │       ├── .claude-plugin/
 │       │   └── plugin.json        # plugin manifest
+│       ├── hooks/hooks.json        # registers the Watchdog Stop hook
+│       ├── commands/watchdog.md    # /fusion-harness:watchdog on|off|status
+│       ├── scripts/                # codex wrapper + Stop-hook + toggle + verdict schema
 │       └── skills/
-│           └── spec-generator/
-│               ├── SKILL.md
-│               └── assets/
-│                   ├── SPEC_template.md
-│                   └── CLAUDE_template.md
+│           ├── consult/SKILL.md
+│           └── duel-plan/SKILL.md
 ├── CHANGELOG.md
 └── README.md
 ```
+
+## fusion-harness
+
+Three ways to pull the Codex CLI into a Claude session. **Prerequisite:** the
+[`codex`](https://github.com/openai/codex) CLI installed and authenticated (`codex login`);
+every mode runs Codex **read-only** (it advises, never edits).
+
+- **Watchdog** — at the end of each turn, Codex reviews your uncommitted changes and either
+  blocks the stop on serious issues (a real bug, security hole, data loss, a clear violation
+  of intent) or just shows a note. Off by default; switch it per project in-session:
+  ```
+  /fusion-harness:watchdog on      # also: off | status
+  ```
+- **Duel Plan** — Claude and Codex each draft a plan, debate up to two rounds, then Claude
+  synthesizes one merged plan with contested points flagged. Ask to "duel plan" a change.
+- **Consult** — a one-shot Codex second opinion. Ask to "consult Codex" or "get a second
+  opinion" on a specific decision, bug, or chunk of code.
 
 ## Install from this folder
 
