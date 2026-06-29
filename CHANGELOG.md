@@ -2,6 +2,11 @@
 
 All notable changes to the **pronskiy-skills** marketplace and its plugins.
 
+## fusion-harness 0.1.1 — 2026-06-29
+
+### Added
+- **Duel Review** — a skill that reviews a pull request with two agents. Claude fetches the PR via `gh` (description + diff), Claude and Codex each review it independently, they challenge each other for up to two rounds, then Claude (as chair) synthesizes one merged review (findings with severity, `file:line`, contested points flagged ⚔️) and presents it. Read-only; nothing is posted to the PR. Requires the `gh` CLI authenticated in addition to `codex`.
+
 ## fusion-harness 0.1.0 — 2026-06-27
 
 ### Added

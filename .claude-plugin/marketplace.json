@@ -21,7 +21,7 @@
     {
       "name": "fusion-harness",
       "source": "./plugins/fusion-harness",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "Fuse Claude with the Codex CLI: Watchdog auto-reviews each turn, Duel Plan co-plans with debate, Consult fetches a second opinion.",
       "category": "workflow",
       "tags": ["codex", "review", "planning", "multi-agent"]

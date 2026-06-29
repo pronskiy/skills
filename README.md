@@ -48,6 +48,9 @@ every mode runs Codex **read-only** (it advises, never edits).
   synthesizes one merged plan with contested points flagged. Ask to "duel plan" a change.
 - **Consult** — a one-shot Codex second opinion. Ask to "consult Codex" or "get a second
   opinion" on a specific decision, bug, or chunk of code.
+- **Duel Review** — give a pull request link and Claude and Codex each review it, challenge
+  each other for up to two rounds, and Claude merges the findings (with severity, contested
+  points flagged) for you. Needs the `gh` CLI authenticated too. Ask to "duel review <PR url>".
 
 ## Install from this folder
 
