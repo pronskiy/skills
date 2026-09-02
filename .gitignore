@@ -1,0 +1,10 @@
+# Editors
+.idea/
+.vscode/
+*.swp
+
+# macOS
+.DS_Store
+
+# Claude Code local state
+.claude/settings.local.json

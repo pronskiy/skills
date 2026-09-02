@@ -27,8 +27,10 @@ spec-generator-plugin/
 │       ├── scripts/                # codex wrapper + Stop-hook + toggle + verdict schema
 │       └── skills/
 │           ├── consult/SKILL.md
-│           └── duel-plan/SKILL.md
+│           ├── duel-plan/SKILL.md
+│           └── duel-review/SKILL.md
 ├── CHANGELOG.md
+├── LICENSE
 └── README.md
 ```
 
@@ -51,6 +53,14 @@ every mode runs Codex **read-only** (it advises, never edits).
 - **Duel Review** — give a pull request link and Claude and Codex each review it, challenge
   each other for up to two rounds, and Claude merges the findings (with severity, contested
   points flagged) for you. Needs the `gh` CLI authenticated too. Ask to "duel review <PR url>".
+
+> **What leaves your machine.** Every mode hands context to the Codex CLI, which sends it to
+> OpenAI. Watchdog is the one to know about, because it is the only automatic one: once enabled
+> for a project, each finished turn sends your uncommitted diff (`git diff HEAD`, capped at
+> 60KB), the list of untracked files, and your last request read from the session transcript.
+> Duel Plan, Consult, and Duel Review send only what you point them at, when you invoke them.
+> Watchdog is off by default and enabled per project — nothing is sent until you run
+> `/fusion-harness:watchdog on`.
 
 ## Install from this folder
 
