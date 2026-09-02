@@ -7,7 +7,8 @@
     "name": "Roman Pronskiy",
     "url": "https://pronskiy.com"
   },
-  "homepage": "https://pronskiy.com",
+  "homepage": "https://github.com/pronskiy/skills/tree/main/plugins/spec-generator",
+  "repository": "https://github.com/pronskiy/skills",
   "license": "MIT",
   "keywords": ["spec", "planning", "scoping", "roadmap", "claude-code", "project-spec"]
 }

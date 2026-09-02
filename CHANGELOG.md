@@ -2,6 +2,18 @@
 
 All notable changes to the **pronskiy-skills** marketplace and its plugins.
 
+## Marketplace — 2026-09-02
+
+### Added
+- `LICENSE` (MIT) — both plugin manifests already declared MIT; now the repo actually ships it.
+- `.gitignore` for editor state (`.idea/`, `.vscode/`, `.DS_Store`), `.claude/settings.local.json`, and `.env*`, so local state and secrets can't be committed from a fresh clone.
+- `repository` field on both plugin manifests; `homepage` now points at each plugin's folder instead of a personal site.
+
+### Changed
+- README rewritten for public use: install via `/plugin marketplace add pronskiy/skills` up front, a section per plugin, and the maintainer-only release loop moved to a **Developing** section at the bottom.
+- Documented what the Watchdog sends to Codex/OpenAI (uncommitted diff, untracked file list, last user request) and that it is off by default per project.
+- Plugin descriptions said "three modes" — fusion-harness has had four since Duel Review landed in 0.1.1.
+
 ## fusion-harness 0.1.1 — 2026-06-29
 
 ### Added

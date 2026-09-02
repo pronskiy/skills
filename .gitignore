@@ -8,3 +8,10 @@
 
 # Claude Code local state
 .claude/settings.local.json
+
+# Superpowers writes design specs here — not part of this repo
+docs/superpowers/
+
+# Secrets — never commit
+.env
+.env.*
