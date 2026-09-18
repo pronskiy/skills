@@ -2,6 +2,15 @@
 
 All notable changes to the **pronskiy-skills** marketplace and its plugins.
 
+## signs-of-ai-writing 0.1.0 — 2026-09-18
+
+### Added
+- Initial release. Checks a piece of writing for AI tells on two layers and reports each with the exact quoted span, its category, and a concrete fix; or returns a de-slopped rewrite with a changelog that ends with the structural tells left as author decisions.
+- **Surface catalog** (`references/catalog.md`), condensed from Wikipedia's *Signs of AI writing*: sixteen categories of tells, the AI-vocabulary lists by era, machine artifacts, signs of human writing, and a do-not-flag list.
+- **Structural catalog** (`references/narrative.md`), from the StoryScope study (COLM 2026, arXiv 2604.03136): thematic over-determination, the embodied-emotion formula, structural streamlining, human-leaning structure, extrapolated essay analogues, low-confidence model fingerprints, a do-not-flag-structurally list, and the 30-feature calibration table. Applied by tier: fiction at full weight, memoir and essays as labeled extrapolations, short functional text skipped.
+- `scripts/clean_text.py`, the required final step: scans for zero-width and direction characters and NFKC-normalizes homoglyphs.
+- `tests/` with three fixtures, the exact subagent prompts, and every baseline and post-change report. The structural layer was tested RED/GREEN: a surface-cleaned AI story that the surface-only skill rated human is now reported as surface-clean but structurally AI, while Mansfield's "Miss Brill" stays human.
+
 ## Marketplace — 2026-09-02
 
 ### Added

@@ -25,6 +25,14 @@
       "description": "Fuse Claude with the Codex CLI: Watchdog auto-reviews each turn, Duel Plan co-plans with debate, Duel Review reviews a PR with two agents, Consult fetches a second opinion.",
       "category": "workflow",
       "tags": ["codex", "review", "planning", "multi-agent"]
+    },
+    {
+      "name": "signs-of-ai-writing",
+      "source": "./plugins/signs-of-ai-writing",
+      "version": "0.1.0",
+      "description": "Check writing for the tells of AI-generated text, surface and structural, and report each with the quoted span, category, and fix, or return a de-slopped rewrite.",
+      "category": "writing",
+      "tags": ["writing", "ai-detection", "editing", "de-slop"]
     }
   ]
 }

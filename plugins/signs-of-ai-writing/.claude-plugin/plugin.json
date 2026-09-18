@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "signs-of-ai-writing",
+  "displayName": "Signs of AI Writing",
+  "description": "Check a piece of writing for the tells of AI-generated text, surface and structural, and report each with the exact quoted span, its category, and a concrete fix, or return a de-slopped rewrite. Based on Wikipedia's Signs of AI writing guide and the StoryScope narrative study.",
+  "author": {
+    "name": "Roman Pronskiy",
+    "url": "https://pronskiy.com"
+  },
+  "homepage": "https://github.com/pronskiy/skills/tree/main/plugins/signs-of-ai-writing",
+  "repository": "https://github.com/pronskiy/skills",
+  "license": "MIT",
+  "keywords": ["writing", "ai-detection", "editing", "de-slop", "humanize", "claude-code"]
+}

@@ -1,11 +1,12 @@
 # pronskiy-skills
 
-A [Claude Code](https://claude.com/claude-code) plugin marketplace with two plugins:
+A [Claude Code](https://claude.com/claude-code) plugin marketplace with three plugins:
 
 | Plugin | What it does |
 | --- | --- |
 | **[spec-generator](#spec-generator)** | Interviews you about a project, then writes a production-ready `SPEC.md` an agent can build against — plus a `CLAUDE.md` that drives it. |
 | **[fusion-harness](#fusion-harness)** | Pulls the [Codex](https://github.com/openai/codex) CLI into a Claude session as a second opinion: an automatic per-turn **Watchdog**, plus **Duel Plan**, **Duel Review**, and **Consult**. |
+| **[signs-of-ai-writing](#signs-of-ai-writing)** | Checks a piece of writing for the tells of AI-generated text, surface and structural, and reports each with the exact span and a fix — or hands back a de-slopped rewrite. |
 
 ## Install
 
@@ -15,6 +16,7 @@ Add the marketplace once, then install whichever plugins you want:
 /plugin marketplace add pronskiy/skills
 /plugin install spec-generator@pronskiy-skills
 /plugin install fusion-harness@pronskiy-skills
+/plugin install signs-of-ai-writing@pronskiy-skills
 ```
 
 Or from the CLI:
@@ -60,6 +62,21 @@ Four ways to put Codex in the room. **Prerequisite:** the [`codex`](https://gith
 
 > **What leaves your machine.** Every mode hands context to the Codex CLI, which sends it to OpenAI. Watchdog is the one to know about, because it is the only automatic one: once enabled for a project, each finished turn sends your uncommitted diff (`git diff HEAD`, capped at 60KB), the list of untracked files, and your last request read from the session transcript. Duel Plan, Duel Review, and Consult send only what you point them at, when you invoke them. Watchdog is off by default and enabled per project — nothing is sent until you run `/fusion-harness:watchdog on`.
 
+## signs-of-ai-writing
+
+Checks a piece of writing for the tells of AI-generated text and hands back a findings report: each tell quoted exactly, its category, and a concrete fix. Ask for a rewrite instead and you get the de-slopped text with a changelog.
+
+It reads two layers:
+
+- **Surface** — condensed from Wikipedia's *Signs of AI writing* field guide: significance inflation, present-participle "analysis" tails, puffery, the AI vocabulary (*delve*, *testament*, *tapestry*…), copula avoidance, negative parallelisms, rule of three, spaced em dashes, chatbot scaffolding, and copy-paste artifacts like `utm_source=chatgpt.com`.
+- **Structural** — from the [StoryScope](https://arxiv.org/abs/2604.03136) study (COLM 2026), which showed AI fiction is detectable from narrative choices alone and that surface de-slopping barely moves that detection: the narrator stating the theme, emotion rendered only as a tightening chest or a cooling cup of coffee, one tidy causal track resolved by internal reconciliation, vague allusions instead of named works. Plain "she felt afraid" and named real things are *human* signs. Fiction is validated; memoir and essays are checked as labeled extrapolations; short functional text is skipped.
+
+Every check ends with a hidden-character scan (`scripts/clean_text.py`) for zero-width spaces, direction marks, and homoglyphs that survive copy-paste out of chatbots and "humanizer" tools.
+
+**Using it:** paste or point at the text and ask whether it sounds like AI, or ask to de-AI / humanize it. Works on essays, blog posts, cover letters, emails, marketing copy, short stories, and memoir. It reports tells, not verdicts about authorship — the caveats are explicit that signs are not proof.
+
+Tests live in `plugins/signs-of-ai-writing/tests/`: three fixtures (a surface-cleaned AI story, a surface-cleaned AI essay, and Mansfield's "Miss Brill" as the human control), the exact prompts, and every baseline and post-change report.
+
 ## Layout
 
 ```
@@ -83,6 +100,13 @@ skills/
 │           ├── consult/SKILL.md
 │           ├── duel-plan/SKILL.md
 │           └── duel-review/SKILL.md
+│   └── signs-of-ai-writing/
+│       ├── .claude-plugin/plugin.json
+│       ├── skills/signs-of-ai-writing/
+│       │   ├── SKILL.md
+│       │   ├── references/         # catalog.md (surface), narrative.md (structural)
+│       │   └── scripts/clean_text.py
+│       └── tests/                  # fixtures, prompts, baseline and post-change reports
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -116,6 +140,7 @@ Forget the bump and Claude Code sees the same string, keeps the cached copy, and
 ```bash
 claude plugin validate ./plugins/spec-generator
 claude plugin validate ./plugins/fusion-harness
+claude plugin validate ./plugins/signs-of-ai-writing
 claude plugin validate .
 ```
 
