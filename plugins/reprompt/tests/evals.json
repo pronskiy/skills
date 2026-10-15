@@ -1,0 +1,132 @@
+{
+  "skill_name": "reprompt",
+  "evals": [
+    {
+      "id": 1,
+      "name": "frankenphp-benchmark-post",
+      "prompt": "/reprompt write a blog post comparing FrankenPHP vs RoadRunner performance for Laravel apps. around 1500 words, audience is mid-level Laravel devs",
+      "expected_output": "Field is a performance engineer who benchmarks and writes. Altitude: readers should be able to pick a runtime for their own app and trust the numbers, so the post rests on a benchmark they can rerun; Claude needs a machine to run both runtimes and a load generator. Depth: own benchmark runs, source code and issue trackers instead of other people's benchmark posts; controlled load tests (k6/wrk/oha), warm-up, percentiles, profiling; a public reproducible benchmark as the judge. Range: in verbs, help a Laravel dev choose a runtime and defend the choice; a borrowed technique such as a methods section from science writing or two-source checking from journalism. The rewrite stays one ~1500-word post.",
+      "files": [],
+      "assertions": [
+        "Names a specific profession for the field, not a generic 'expert'",
+        "The Altitude note names a goal beyond the stated task that is specific to this prompt, or says in one line why it stays at task level",
+        "If Altitude raises the goal, it names concrete access, tooling or environments Claude would need",
+        "The Depth note contrasts a digested source with a concrete raw source and says where to get the raw one",
+        "The Depth note names at least two specific methods or tools by name, not generic verbs like 'analyze' or 'research'",
+        "The Depth note names an outside check that could fail, other than the user and the assistant, with a pass threshold or concrete outcome",
+        "The Range note restates the task in verbs and names at least one field beyond the obvious one with a specific technique from it",
+        "Suggests one concrete stretch target in the notes and does not put it into the rewritten prompt",
+        "There is exactly one rewritten prompt, in a fenced code block, self-contained, with a 'Done when' line",
+        "The rewritten prompt has no role-play framing such as 'You are...' or 'Act as...'",
+        "Does not invent facts about the user's situation; unknowns are [placeholders] or questions",
+        "Does not start doing the task itself",
+        "Text before the rewritten prompt is under 450 words",
+        "The rewritten prompt still asks for one blog post of about 1500 words for mid-level Laravel devs; any added artifact (such as a benchmark repo) is justified in the Altitude note"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "newsletter-signup-drop",
+      "prompt": "/reprompt figure out why our newsletter signups dropped about 30% in September compared to August. we use Mailchimp for the list and Plausible for site analytics. need an answer by Friday for the team sync",
+      "expected_output": "Field is a growth/product analyst. Altitude: catch a signup drop within days next time, not a month later, while still answering by Friday; Claude needs Mailchimp and Plausible exports or API access and the deploy/change log. Depth: per-form signup events and audience exports, raw Plausible referrers and pages, instead of dashboard totals; segmenting the drop by source/page/form, funnel analysis, checking for tracking breaks, a seasonality baseline; the cause predicts something checkable. Range: in verbs, find what changed and prove it; incident postmortem timeline or a case-control comparison. Keeps the Friday deadline and an answer sized for a team sync.",
+      "files": [],
+      "assertions": [
+        "Names a specific profession for the field, not a generic 'expert'",
+        "The Altitude note names a goal beyond the stated task that is specific to this prompt, or says in one line why it stays at task level",
+        "If Altitude raises the goal, it names concrete access, tooling or environments Claude would need",
+        "The Depth note contrasts a digested source with a concrete raw source and says where to get the raw one",
+        "The Depth note names at least two specific methods or tools by name, not generic verbs like 'analyze' or 'research'",
+        "The Depth note names an outside check that could fail, other than the user and the assistant, with a pass threshold or concrete outcome",
+        "The Range note restates the task in verbs and names at least one field beyond the obvious one with a specific technique from it",
+        "Suggests one concrete stretch target in the notes and does not put it into the rewritten prompt",
+        "There is exactly one rewritten prompt, in a fenced code block, self-contained, with a 'Done when' line",
+        "The rewritten prompt has no role-play framing such as 'You are...' or 'Act as...'",
+        "Does not invent facts about the user's situation; unknowns are [placeholders] or questions",
+        "Does not start doing the task itself",
+        "Text before the rewritten prompt is under 450 words",
+        "The rewritten prompt keeps the Friday deadline and an answer sized for a team sync",
+        "Raw material includes Mailchimp and Plausible data below the dashboard level (exports, per-form or per-source breakdowns, raw events)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "marathon-shoes-ru",
+      "prompt": "/reprompt помоги выбрать кроссовки для первого марафона, бюджет до 200 евро, бегаю 3 раза в неделю около 40 км, марафон в апреле",
+      "expected_output": "Answer in Russian. Field is a running coach, sports podiatrist or running-shop fitter. Altitude: finish the April marathon without injury, shoes being one part of it; or stays at task level with a reason. Depth: the runner's own feet, current shoes' wear pattern, injury history and training log instead of review roundups; gait/wear analysis, in-store fitting, test runs at marathon pace, a long-run trial; no hot spots or blisters on a 25-30 km long run before April. Range: in verbs, carry this runner 42 km in April without pain; a technique from podiatry or retail fitting. Keeps the 200 EUR budget and a single recommendation.",
+      "files": [],
+      "assertions": [
+        "Names a specific profession for the field, not a generic 'expert'",
+        "The Altitude note names a goal beyond the stated task that is specific to this prompt, or says in one line why it stays at task level",
+        "If Altitude raises the goal, it names concrete access, tooling or environments Claude would need",
+        "The Depth note contrasts a digested source with a concrete raw source and says where to get the raw one",
+        "The Depth note names at least two specific methods or tools by name, not generic verbs like 'analyze' or 'research'",
+        "The Depth note names an outside check that could fail, other than the user and the assistant, with a pass threshold or concrete outcome",
+        "The Range note restates the task in verbs and names at least one field beyond the obvious one with a specific technique from it",
+        "Suggests one concrete stretch target in the notes and does not put it into the rewritten prompt",
+        "There is exactly one rewritten prompt, in a fenced code block, self-contained, with a 'Done when' line",
+        "The rewritten prompt has no role-play framing such as 'You are...' or 'Act as...'",
+        "Does not invent facts about the user's situation; unknowns are [placeholders] or questions",
+        "Does not start doing the task itself",
+        "Text before the rewritten prompt is under 450 words",
+        "The whole reply, headings included, is in Russian",
+        "The rewritten prompt keeps the 200 EUR budget, the current training load and the April date"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "trivial-date-conversion",
+      "prompt": "/reprompt convert these dates to ISO 8601: 03/14/2026, 11/02/2025, 07/30/2026",
+      "expected_output": "Recognizes there is no meaningful more ambitious version, says so briefly, and returns the prompt with at most a check (e.g. confirm MM/DD vs DD/MM ambiguity for 11/02/2025). Does not inflate it into a date-handling project.",
+      "files": [],
+      "assertions": [
+        "Says briefly that the task has no meaningful more ambitious version",
+        "Does not produce the full Altitude/Depth/Range breakdown",
+        "Flags that 11/02/2025 is ambiguous (MM/DD vs DD/MM) or otherwise names the one check that matters",
+        "Whole reply is under 120 words"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "checkout-expired-card-bug",
+      "prompt": "/reprompt fix the bug where checkout fails for customers with expired saved cards, ticket #482",
+      "expected_output": "Field is a payments/backend engineer. Altitude: no customer loses a checkout to a card problem; payment failures tracked and kept below a rate. Claude needs the payment provider's logs or API, the error tracker, and a staging environment with the provider's test cards. Depth: provider decline codes and request logs instead of the ticket description; reproduce with test cards, a failing test first, git bisect if it's a regression; the failing test passes and the decline-related checkout failure rate drops. Range: in verbs, make sure a customer whose card stopped working still pays; a technique such as dunning and card-updater practice from subscription billing. Still fixes #482.",
+      "files": [],
+      "assertions": [
+        "Names a specific profession for the field, not a generic 'expert'",
+        "The Altitude note raises the goal above the single bug to an outcome about checkout or payment failures",
+        "The Altitude note names concrete access Claude would need: the payment provider's logs or API, an error tracker, or a test/staging environment with test cards",
+        "The Depth note contrasts a digested source with a concrete raw source and says where to get the raw one",
+        "The Depth note names at least two specific methods or tools by name, not generic verbs like 'analyze' or 'research'",
+        "The outside judge includes a test that reproduces the bug: failing before the fix and passing after",
+        "The Range note restates the task in verbs and names at least one field beyond the obvious one with a specific technique from it",
+        "Suggests one concrete stretch target in the notes and does not put it into the rewritten prompt",
+        "There is exactly one rewritten prompt, in a fenced code block, self-contained, with a 'Done when' line",
+        "The rewritten prompt has no role-play framing such as 'You are...' or 'Act as...'",
+        "Does not invent facts about the user's situation (payment provider, stack, file names); unknowns are [placeholders] or questions",
+        "Does not start doing the task itself",
+        "Text before the rewritten prompt is under 450 words",
+        "The rewritten prompt still includes fixing ticket #482"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "wedding-toast",
+      "prompt": "/reprompt write a 3-minute toast for my sister's wedding",
+      "expected_output": "Field is a speechwriter. Altitude stays at task level: a one-off creative piece. Depth: real stories from the user and people who know the couple instead of toast templates; reading it aloud with a timer; a test listener. Range: in verbs, make a room of strangers laugh and then feel something about two people in three minutes; stand-up techniques such as the callback or rule of three. The toast stays about 3 minutes and asks the user for real stories rather than inventing them.",
+      "files": [],
+      "assertions": [
+        "Names a specific profession for the field, not a generic 'expert'",
+        "The Altitude note says the task stays at task level (creative, one-off) and does not turn it into a bigger project",
+        "The Depth note contrasts a digested source (templates, generic toasts) with raw material from the user's own life and says how to get it",
+        "The Depth note names an outside check that could fail, such as a timed read-aloud or a test listener, with a pass threshold or concrete outcome",
+        "The Range note restates the task in verbs and brings in a specific technique from stand-up, speechwriting or another field",
+        "There is exactly one rewritten prompt, in a fenced code block, self-contained, with a 'Done when' line",
+        "The rewritten prompt has no role-play framing such as 'You are...' or 'Act as...'",
+        "Does not invent names, stories or anecdotes about the sister or the couple; they are [placeholders] or questions for the user",
+        "Does not write the toast",
+        "Text before the rewritten prompt is under 450 words",
+        "The rewritten prompt still asks for one toast of about 3 minutes"
+      ]
+    }
+  ]
+}

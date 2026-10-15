@@ -2,6 +2,12 @@
 
 All notable changes to the **pronskiy-skills** marketplace and its plugins.
 
+## reprompt 0.2.0 — 2026-10-15
+
+### Added
+- First public release, moved from a private marketplace. Rewrites a prompt to be more ambitious through three lenses from Felix Rieseberg's "How to be more ambitious": Altitude (the outcome behind the task and what Claude needs to own it), Depth (raw material, a professional's instruments, an outside judge with a pass threshold) and Range (the task in verbs, techniques borrowed from other fields, named passes). Returns short notes per lens, a stretch target for the user, and one rewritten prompt. Runs only as `/reprompt`.
+- `tests/evals.json` with six prompts and their checks.
+
 ## signs-of-ai-writing 0.1.0 — 2026-09-18
 
 ### Added

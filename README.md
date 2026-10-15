@@ -1,12 +1,13 @@
 # pronskiy-skills
 
-A [Claude Code](https://claude.com/claude-code) plugin marketplace with three plugins:
+A [Claude Code](https://claude.com/claude-code) plugin marketplace with four plugins:
 
 | Plugin | What it does |
 | --- | --- |
 | **[spec-generator](#spec-generator)** | Interviews you about a project, then writes a production-ready `SPEC.md` an agent can build against — plus a `CLAUDE.md` that drives it. |
 | **[fusion-harness](#fusion-harness)** | Pulls the [Codex](https://github.com/openai/codex) CLI into a Claude session as a second opinion: an automatic per-turn **Watchdog**, plus **Duel Plan**, **Duel Review**, and **Consult**. |
 | **[signs-of-ai-writing](#signs-of-ai-writing)** | Checks a piece of writing for the tells of AI-generated text, surface and structural, and reports each with the exact span and a fix — or hands back a de-slopped rewrite. |
+| **[reprompt](#reprompt)** | Rewrites a prompt to be more ambitious through Altitude, Depth and Range, after Felix Rieseberg's post, and returns one rewritten prompt. |
 
 ## Install
 
@@ -17,6 +18,7 @@ Add the marketplace once, then install whichever plugins you want:
 /plugin install spec-generator@pronskiy-skills
 /plugin install fusion-harness@pronskiy-skills
 /plugin install signs-of-ai-writing@pronskiy-skills
+/plugin install reprompt@pronskiy-skills
 ```
 
 Or from the CLI:
@@ -77,6 +79,21 @@ Every check ends with a hidden-character scan (`scripts/clean_text.py`) for zero
 
 Tests live in `plugins/signs-of-ai-writing/tests/`: three fixtures (a surface-cleaned AI story, a surface-cleaned AI essay, and Mansfield's "Miss Brill" as the human control), the exact prompts, and every baseline and post-change report.
 
+## reprompt
+
+Rewrites a prompt to ask for more of the right kind, using three lenses from Felix Rieseberg's [How to be more ambitious](https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/). It runs only when you call it: `/reprompt:reprompt <prompt>`. Without arguments it works on the last task you gave in the conversation. Claude never loads it on its own (`disable-model-invocation: true`).
+
+**What you get:** the field it assumed, short notes per lens, a stretch target, and one rewritten prompt:
+
+- **Altitude:** the outcome the task serves ("fix this flaky test" → "keep main green"), and what Claude would need to own it: data access, mappings, somewhere to reproduce and verify. Creative and one-off tasks stay at task level.
+- **Depth:** what a top professional would do that the prompt skips, the raw material they'd start from ("instead of the dashboard → the raw export"), the instruments they'd run rather than the vocabulary they'd use, a belief to test against the data, and an outside judge with a pass threshold.
+- **Range:** the task restated in verbs, techniques borrowed from one to three other fields, and named passes (analyst, editor, adversary). The prompt asks for what a practitioner does, never "act as".
+- **Stretch target:** one hard, specific goal for you to add if you want it. It isn't put into the prompt.
+
+The rewritten prompt comes in a code block, in the language and voice of the original. It keeps your constraints (deadline, audience, length, budget). The deliverable changes only when the outcome calls for it, and the notes say so. Facts it doesn't know about your world become `[placeholders]`. It stops there and doesn't run the task until you say so. A trivial task gets one line saying there's nothing more ambitious to ask for.
+
+**Tests:** `plugins/reprompt/tests/evals.json` holds six prompts with their checks: a FrankenPHP vs RoadRunner blog post, a newsletter signup drop, marathon shoes (in Russian), a trivial date conversion that should stay trivial, an expired-card checkout bug that should rise to an outcome, and a wedding toast that should stay at task level.
+
 ## Layout
 
 ```
@@ -107,6 +124,10 @@ skills/
 │       │   ├── references/         # catalog.md (surface), narrative.md (structural)
 │       │   └── scripts/clean_text.py
 │       └── tests/                  # fixtures, prompts, baseline and post-change reports
+│   └── reprompt/
+│       ├── .claude-plugin/plugin.json
+│       ├── skills/reprompt/SKILL.md
+│       └── tests/evals.json        # six prompts with their checks
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -141,6 +162,7 @@ Forget the bump and Claude Code sees the same string, keeps the cached copy, and
 claude plugin validate ./plugins/spec-generator
 claude plugin validate ./plugins/fusion-harness
 claude plugin validate ./plugins/signs-of-ai-writing
+claude plugin validate ./plugins/reprompt
 claude plugin validate .
 ```
 

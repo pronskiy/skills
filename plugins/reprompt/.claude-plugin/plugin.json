@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "reprompt",
+  "displayName": "Reprompt",
+  "description": "Rewrites a prompt to be more ambitious through the three lenses of Felix Rieseberg's \"How to be more ambitious\": Altitude (the outcome behind the task), Depth (raw material, a professional's instruments, an outside judge) and Range (methods borrowed from other fields), then returns one rewritten prompt.",
+  "author": {
+    "name": "Roman Pronskiy",
+    "url": "https://pronskiy.com"
+  },
+  "homepage": "https://github.com/pronskiy/skills/tree/main/plugins/reprompt",
+  "repository": "https://github.com/pronskiy/skills",
+  "license": "MIT",
+  "keywords": ["prompting", "prompt-engineering", "reprompt", "claude-code"]
+}

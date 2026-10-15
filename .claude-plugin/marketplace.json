@@ -33,6 +33,14 @@
       "description": "Check writing for the tells of AI-generated text, surface and structural, and report each with the quoted span, category, and fix, or return a de-slopped rewrite.",
       "category": "writing",
       "tags": ["writing", "ai-detection", "editing", "de-slop"]
+    },
+    {
+      "name": "reprompt",
+      "source": "./plugins/reprompt",
+      "version": "0.2.0",
+      "description": "Rewrites a prompt to be more ambitious through Altitude (the outcome behind the task), Depth (raw material, a professional's instruments, an outside judge) and Range (methods from other fields), after Felix Rieseberg's post, and returns one rewritten prompt. Runs only as /reprompt.",
+      "category": "productivity",
+      "tags": ["prompting", "prompt-engineering", "reprompt", "ambition"]
     }
   ]
 }
